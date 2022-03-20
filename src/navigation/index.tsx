@@ -119,5 +119,7 @@ export default function AppNavigator() {
 const screenOptions = {
   contentStyle: {
     backgroundColor: 'white',
+
   },
+    headerShown:false
 };
