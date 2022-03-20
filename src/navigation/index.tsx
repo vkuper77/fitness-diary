@@ -8,6 +8,7 @@ import NoteBookTabIcon from '../components/UI/icons/NoteBookTabIcon';
 import ProfileTabIcon from '../components/UI/icons/ProfileTabIcon';
 import AddTabIcon from '../components/UI/icons/AddTabIcon';
 import HomeScreen from '../screens/Home';
+import CalendarScreen from '../screens/Calendar';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -24,7 +25,7 @@ const SettingsStack = createNativeStackNavigator();
 function SettingsStackScreen() {
   return (
     <SettingsStack.Navigator screenOptions={screenOptions}>
-      <SettingsStack.Screen name="Settings" component={HomeScreen} />
+      <SettingsStack.Screen name="Settings" component={CalendarScreen} />
     </SettingsStack.Navigator>
   );
 }
@@ -34,7 +35,7 @@ const CalendarStack = createNativeStackNavigator();
 function CalendarStackScreen() {
   return (
     <CalendarStack.Navigator screenOptions={screenOptions}>
-      <CalendarStack.Screen name="Calendar" component={HomeScreen} />
+      <CalendarStack.Screen name="Calendar" component={CalendarScreen} />
     </CalendarStack.Navigator>
   );
 }
@@ -44,7 +45,7 @@ const AddStack = createNativeStackNavigator();
 function AddStackScreen() {
   return (
     <AddStack.Navigator screenOptions={screenOptions}>
-      <AddStack.Screen name="Add" component={HomeScreen} />
+      <AddStack.Screen name="Add" component={CalendarScreen} />
     </AddStack.Navigator>
   );
 }
@@ -54,7 +55,7 @@ const NotebookStack = createNativeStackNavigator();
 function NotebookStackScreen() {
   return (
     <NotebookStack.Navigator screenOptions={screenOptions}>
-      <NotebookStack.Screen name="Notebook" component={HomeScreen} />
+      <NotebookStack.Screen name="Notebook" component={CalendarScreen} />
     </NotebookStack.Navigator>
   );
 }
@@ -64,18 +65,7 @@ const Tab = createBottomTabNavigator();
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: '#7956E2',
-          tabBarInactiveTintColor: '#3E3E3E',
-          tabBarStyle: {
-            backgroundColor: '#F5F5F5',
-            position: 'absolute',
-            bottom: -10,
-          },
-          title: '',
-        }}>
+      <Tab.Navigator screenOptions={optionsNavigator}>
         <Tab.Screen
           name="Home"
           component={HomeStackScreen}
@@ -116,10 +106,21 @@ export default function AppNavigator() {
   );
 }
 
-const screenOptions = {
+const screenOptions: Object = {
   contentStyle: {
     backgroundColor: 'white',
-
   },
-    headerShown:false
+  headerShown: false,
+};
+
+const optionsNavigator: Object = {
+  headerShown: false,
+  tabBarActiveTintColor: '#7956E2',
+  tabBarInactiveTintColor: '#3E3E3E',
+  tabBarStyle: {
+    backgroundColor: '#F5F5F5',
+    position: 'absolute',
+    bottom: -10,
+  },
+  title: '',
 };
