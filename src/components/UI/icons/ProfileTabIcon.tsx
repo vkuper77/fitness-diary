@@ -1,20 +1,17 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {SIZE_BAR_ICON} from '../../../settings/constants';
 
 export interface ProfileTabIcon {
-  color: string;
+  color: string | null;
 }
 
 export default function ProfileTabIcon({color}: ProfileTabIcon) {
+  const width: number = 25;
+  const height: number = 21;
+  const tint: object = color ? {tintColor: color} : {};
   return (
     <Image
-      style={{
-        tintColor: color,
-        width: SIZE_BAR_ICON,
-        height: SIZE_BAR_ICON,
-        marginBottom: 25,
-      }}
+      style={[{width, height}, tint]}
       source={require('../../../assets/img/profile.png')}
     />
   );

@@ -1,33 +1,18 @@
 import React from 'react';
-import {Image, useWindowDimensions, View} from 'react-native';
-import {SIZE_BAR_ICON} from '../../../settings/constants';
+import {Image, View} from 'react-native';
 
 export interface HomeTabIcon {
-  color: string;
+  color: string | null;
 }
 
 export default function HomeTabIcon({color}: HomeTabIcon) {
-  const {width} = useWindowDimensions();
+  const width: number = 22;
+  const height: number = 21;
+  const tint: object = color ? {tintColor: color} : {};
   return (
     <View>
-      <View
-        style={{
-          width: width / 2,
-          height: 50,
-          backgroundColor: '#F5F5F5',
-          position: 'absolute',
-          top: -15,
-          left: -30,
-          borderTopRightRadius: 50,
-        }}
-      />
       <Image
-        style={{
-          tintColor: color,
-          width: SIZE_BAR_ICON,
-          height: SIZE_BAR_ICON,
-          marginBottom: 25,
-        }}
+        style={[{width, height}, tint]}
         source={require('../../../assets/img/home.png')}
       />
     </View>

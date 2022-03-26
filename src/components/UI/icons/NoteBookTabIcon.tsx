@@ -1,20 +1,17 @@
 import React from 'react';
 import {Image} from 'react-native';
-import {SIZE_BAR_ICON} from '../../../settings/constants';
 
 export interface NoteBookTabIcon {
-  color: string;
+  color: string | null;
 }
 
 export default function NoteBookTabIcon({color}: NoteBookTabIcon) {
+  const width: number = 18;
+  const height: number = 21;
+  const tint: object = color ? {tintColor: color} : {};
   return (
     <Image
-      style={{
-        tintColor: color,
-        width: SIZE_BAR_ICON,
-        height: SIZE_BAR_ICON,
-        marginBottom: 25,
-      }}
+      style={[{width, height}, tint]}
       source={require('../../../assets/img/note-book.png')}
     />
   );
