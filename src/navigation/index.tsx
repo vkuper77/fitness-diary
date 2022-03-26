@@ -7,6 +7,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import CalendarScreen from '../screens/Calendar';
 import TabBarContext from './TabBarContext';
 import HomeScreen from '../screens/Home';
+import DetailCard from '../screens/DetailCard';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions={screenOptions}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Details" component={DetailCard} />
     </HomeStack.Navigator>
   );
 }

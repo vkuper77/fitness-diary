@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import HeaderCard from '../components/Home/HeaderCard';
 import ScrollPlate from '../components/Home/ScrollPlate';
+import ScrollCards from '../components/Home/ScrollCards';
 
 export default function HomeScreen() {
   return (
@@ -10,6 +11,7 @@ export default function HomeScreen() {
       <View style={{marginTop: 22}}>
         <ScrollPlate />
       </View>
+      <ScrollCards />
     </View>
   );
 }
