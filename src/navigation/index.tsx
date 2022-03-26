@@ -2,23 +2,44 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import HomeTabIcon from '../components/UI/icons/HomeTabIcon';
 import CalendarTabIcon from '../components/UI/icons/CalendarTabIcon';
 import NoteBookTabIcon from '../components/UI/icons/NoteBookTabIcon';
 import ProfileTabIcon from '../components/UI/icons/ProfileTabIcon';
 import AddTabIcon from '../components/UI/icons/AddTabIcon';
-import HomeScreen from '../screens/Home';
 import CalendarScreen from '../screens/Calendar';
+import HomeScreen from '../screens/Home';
+import {View, Text} from 'react-native';
 
 const HomeStack = createNativeStackNavigator();
-
-
 
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions={screenOptions}>
       <HomeStack.Screen name="Home" component={HomeScreen} />
     </HomeStack.Navigator>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+
+function DrawerStackScreen() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Root"
+      screenOptions={{headerShown: false}}
+      drawerContent={() => (
+        <View style={{alignItems: 'center'}}>
+          <Text>TEST</Text>
+          <Text>TEST</Text>
+          <Text>TEST</Text>
+          <Text>TEST</Text>
+          <Text>TEST</Text>
+        </View>
+      )}>
+      <Drawer.Screen name="Root" component={HomeStackScreen} />
+    </Drawer.Navigator>
   );
 }
 
@@ -70,7 +91,7 @@ export default function AppNavigator() {
       <Tab.Navigator screenOptions={optionsNavigator}>
         <Tab.Screen
           name="Home"
-          component={HomeStackScreen}
+          component={DrawerStackScreen}
           options={{
             tabBarIcon: e => <HomeTabIcon color={e.color} />,
           }}
