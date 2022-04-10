@@ -9,6 +9,9 @@ import TabBarContext from './TabBarContext';
 import HomeScreen from '../screens/Home';
 import DetailCard from '../screens/DetailCard';
 
+import RNBootSplash from 'react-native-bootsplash';
+import {useEffect} from 'react';
+
 const HomeStack = createNativeStackNavigator();
 
 function HomeStackScreen() {
@@ -76,6 +79,11 @@ function DrawerStackScreen() {
 const Tab = createBottomTabNavigator();
 
 export default function AppNavigator() {
+  useEffect(() => {
+    setTimeout(() => {
+      RNBootSplash.hide({fade: true});
+    }, 2000);
+  }, []);
   return (
     <NavigationContainer>
       <Tab.Navigator
